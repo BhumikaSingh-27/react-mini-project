@@ -5,9 +5,14 @@ import { useState } from "react";
 var color = "red";
 var bgColor = "pink";
 
+var foodItemList = {
+  pizza: " 1. large 2.medium 3.small",
+  coffee: "1. black coffee 2. strong coffee"
+};
 export default function App() {
   var [addItem, setItem] = useState(0);
   var [displaySearch, setSearch] = useState("");
+  var [foodItem, setFoodItem] = useState("");
   function clickHandler(sym) {
     if (sym === "+") {
       addItem = addItem + 1;
@@ -22,10 +27,17 @@ export default function App() {
     }
   }
 
-  function changeHandler(event) {
+  function searchchangeHandler(event) {
     setSearch(event.target.value);
   }
 
+  function changeHandler(event) {
+    var foodItemInput = event.target.value;
+    var item = foodItemList[foodItemInput];
+    // console.log(foodItemInput);
+    setFoodItem(item);
+    // console.log(foodItemList[foodItemInput]);
+  }
   return (
     <div className="App">
       <h1 style={{ backgroundColor: bgColor }}>
@@ -34,7 +46,7 @@ export default function App() {
       <h2>Start ordering and see the magic in taste!</h2>
       <h3>
         {" "}
-        Search <input onChange={changeHandler} />
+        Search <input onChange={searchchangeHandler} />
         {/* <div> {displaySearch}</div> */}
       </h3>
       <h3>You searched for: {displaySearch}</h3>
@@ -50,6 +62,15 @@ export default function App() {
       </div>
 
       <p>You have added: {addItem} items</p>
+
+      <div>
+        <p> Enter food Item:</p>
+        <input onChange={changeHandler} />
+
+        <p>
+          Suggestions: <br /> {foodItem}
+        </p>
+      </div>
     </div>
   );
 }
