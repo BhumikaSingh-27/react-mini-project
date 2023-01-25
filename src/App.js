@@ -7,6 +7,7 @@ var bgColor = "pink";
 
 export default function App() {
   var [addItem, setItem] = useState(0);
+  var [displaySearch, setSearch] = useState("");
   function clickHandler(sym) {
     if (sym === "+") {
       addItem = addItem + 1;
@@ -21,7 +22,9 @@ export default function App() {
     }
   }
 
-  function changeHandler() {}
+  function changeHandler(event) {
+    setSearch(event.target.value);
+  }
 
   return (
     <div className="App">
@@ -32,8 +35,9 @@ export default function App() {
       <h3>
         {" "}
         Search <input onChange={changeHandler} />
+        {/* <div> {displaySearch}</div> */}
       </h3>
-
+      <h3>You searched for: {displaySearch}</h3>
       <div>
         <img
           alt=""
