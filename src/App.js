@@ -13,6 +13,8 @@ export default function App() {
   var [addItem, setItem] = useState(0);
   var [displaySearch, setSearch] = useState("");
   var [foodItem, setFoodItem] = useState("");
+  var [colorp, setColor] = useState("transparent");
+
   function clickHandler(sym) {
     if (sym === "+") {
       addItem = addItem + 1;
@@ -37,6 +39,9 @@ export default function App() {
     // console.log(foodItemInput);
     setFoodItem(item);
     // console.log(foodItemList[foodItemInput]);
+  }
+  function changeColor() {
+    if (colorp === "transparent" ? setColor("red") : setColor("transparent"));
   }
   return (
     <div className="App">
@@ -70,6 +75,9 @@ export default function App() {
         <p>
           Suggestions: <br /> {foodItem}
         </p>
+
+        <p style={{ backgroundColor: colorp }}>I'm a powerful girl </p>
+        <button onClick={changeColor}> toggle</button>
       </div>
     </div>
   );
