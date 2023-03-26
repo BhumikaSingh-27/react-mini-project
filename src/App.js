@@ -9,6 +9,7 @@ var foodItemList = {
   pizza: " 1. large 2.medium 3.small",
   coffee: "1. black coffee 2. strong coffee"
 };
+const { pizza, coffee } = foodItemList;
 export default function App() {
   var [addItem, setItem] = useState(0);
   var [displaySearch, setSearch] = useState("");
@@ -69,7 +70,7 @@ export default function App() {
       <p>You have added: {addItem} items</p>
 
       <div>
-        <p> Enter food Item:</p>
+        <p> Enter food Item: pizza or coffee </p>
         <input onChange={changeHandler} />
 
         <p>
